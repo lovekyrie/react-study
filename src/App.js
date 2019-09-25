@@ -8,6 +8,7 @@ import AntdTest from "./components/AntdTest"
 import CommentList from './components/CommentList';
 import Hoc from './components/Hoc';
 import Composition from './components/Composition';
+import RouterSample from './components/RouterSample';
 
 function formatName(user){
   return `${user.firstName} ${user.lastName}`
@@ -43,6 +44,9 @@ function App() {
 
     {/* 复合组件 函数作为子组件 */}
     <Composition></Composition>
+
+    {/* 简单router */}
+    <RouterSample></RouterSample>
     </div>
   );
 }

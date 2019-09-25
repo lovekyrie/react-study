@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button } from "antd";
 
 export default class CartSample extends Component {
 
@@ -82,42 +83,44 @@ export default class CartSample extends Component {
         {/* 列表渲染 */}
         <div>
           <input type="text" value={this.state.text} onChange={this.textChange} />
-          <button onClick={this.addGood}>添加商品</button>
+          <Button type="primary" onClick={this.addGood}>
+            添加商品
+          </Button>
         </div>
         <ul>
-          {this.state.goods.map(good =>
-            <li key={good.id}>{good.name}
-              <button onClick={() => this.addCart(good)}>加购</button>
-            </li>)}
+          {this.state.goods.map(good => (
+            <li key={good.id}>
+              {good.name}
+              <Button type="primary" onClick={() => this.addCart(good)}>
+                加购
+              </Button>
+            </li>
+          ))}
         </ul>
 
         <Cart data={this.state.cart} add={this.add} minus={this.minus} />
       </div>
-    )
+    );
   }
 }
 
 // 参数需要解构
 function Cart({ data, add, minus }) {
   return (
-
     <table>
       <tbody>
-
         {data.map(item => (
           <tr key={item.id}>
             <td>{item.name}</td>
             <td>
-              <button onClick={() => minus(item)}>-</button>
+              <Button onClick={() => minus(item)}>-</Button>
               {item.count}
-              <button onClick={() => add(item)}>+</button>
+              <Button onClick={() => add(item)}>+</Button>
             </td>
           </tr>
         ))}
-
       </tbody>
     </table>
-
-  )
+  );
 }
 
