@@ -12,6 +12,7 @@ import StateTest from "./components/StateTest";
 import AntdTest from "./components/AntdTest";
 import SnapshotSample from "./lifecycle/SnapshotSample";
 import chatApp from "./chat/chatApp";
+import UseContext from "./content/UseContext"
 import Hello from "./Hello";
 
 const styles = {
@@ -21,7 +22,7 @@ const styles = {
 
 const routeMap = {
   clock: Clock,
-   chat: chatApp,
+  chat: chatApp,
   "cart-sample": CartSample,
   "router-sample": RouterSample,
   "comment-list": CommentList,
@@ -29,7 +30,8 @@ const routeMap = {
   hoc: Hoc,
   "state-test": StateTest,
   "antd-test": AntdTest,
-  "snapshot-sample": SnapshotSample
+  "snapshot-sample": SnapshotSample,
+  "use-context": UseContext
 };
 
 class App extends React.PureComponent {
