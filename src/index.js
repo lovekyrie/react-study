@@ -13,6 +13,7 @@ import AntdTest from "./components/AntdTest";
 import SnapshotSample from "./lifecycle/SnapshotSample";
 import chatApp from "./chat/chatApp";
 import UseContext from "./content/UseContext"
+import HookTest from "./hook/HookTest"
 import Hello from "./Hello";
 
 const styles = {
@@ -31,7 +32,8 @@ const routeMap = {
   "state-test": StateTest,
   "antd-test": AntdTest,
   "snapshot-sample": SnapshotSample,
-  "use-context": UseContext
+  "use-context": UseContext,
+  "hook-test":HookTest
 };
 
 class App extends React.PureComponent {
