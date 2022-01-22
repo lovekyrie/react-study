@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function withTimer(WrapperComponent) {
-  return class extends React.Component {
+  return class withTimer extends React.Component {
     state = { time: new Date() };
     componentDidMount() {
       this.timerID = setInterval(() => this.tick(), 1000);
@@ -11,11 +11,11 @@ export default function withTimer(WrapperComponent) {
     }
     tick() {
       this.setState({
-        time: new Date()
+        time: new Date(),
       });
     }
-    render(){
-      return <WrapperComponent time={this.state.time} {...this.props} />
+    render() {
+      return <WrapperComponent time={this.state.time} {...this.props} />;
     }
   };
 }

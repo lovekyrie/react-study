@@ -3,12 +3,12 @@ import "./SnapshotSample.css";
 
 export default class SnapshotSample extends PureComponent {
   state = {
-    messages: []
+    messages: [],
   };
 
   handleNewMessage() {
-    this.setState(prev => ({
-      messages: [`msg ${prev.messages.length}`, ...prev.messages]
+    this.setState((prev) => ({
+      messages: [`msg ${prev.messages.length}`, ...prev.messages],
     }));
   }
 
@@ -19,7 +19,7 @@ export default class SnapshotSample extends PureComponent {
         clearInterval(this.interval);
         return;
       }
-      this.handleNewMessage()
+      this.handleNewMessage();
     }, 1000);
   }
 
@@ -33,9 +33,9 @@ export default class SnapshotSample extends PureComponent {
 
   render() {
     return (
-      <div className="snapshot-sample" ref={n => (this.rootNode = n)}>
-        {this.state.messages.map(msg => (
-          <div>{msg}</div>
+      <div className="snapshot-sample" ref={(n) => (this.rootNode = n)}>
+        {this.state.messages.map((msg) => (
+          <div key={msg}>{msg}</div>
         ))}
       </div>
     );

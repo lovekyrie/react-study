@@ -1,12 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export default class CommentList extends Component {
-
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      commentList: []
-    }
+      commentList: [],
+    };
   }
 
   componentDidMount() {
@@ -15,14 +14,14 @@ export default class CommentList extends Component {
         commentList: [
           {
             body: "react is good",
-            author: "facebook"
+            author: "facebook",
           },
           {
             body: "vue is very good",
-            author: "youyuxi"
-          }
-        ]
-      })
+            author: "youyuxi",
+          },
+        ],
+      });
     }, 1000);
   }
   render() {
@@ -32,9 +31,8 @@ export default class CommentList extends Component {
           <Comment key={i} {...c}></Comment>
         ))}
       </div>
-    )
+    );
   }
-
 }
 
 //展示组件
@@ -52,12 +50,12 @@ export default class CommentList extends Component {
 // }
 
 //以函数形式创建
-const Comment =React.memo(function(props){
-  console.log('render comment')
+const Comment = React.memo(function comment(props) {
+  console.log("render comment");
   return (
     <div>
       <p>{props.body}</p>
       <p>{props.author}</p>
     </div>
-  )
-})
+  );
+});

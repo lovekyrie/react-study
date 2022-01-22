@@ -1,19 +1,19 @@
 import React, { Component } from "react";
-import withTimer from "../components/withTimer"
+import withTimer from "../components/withTimer";
 
 const styles = {
-  color: "#fff"
+  color: "#fff",
 };
 
 class chatApp extends Component {
   state = {
     messages: [],
-    inputMsg: ""
+    inputMsg: "",
   };
 
-  handleInput = evt => {
+  handleInput = (evt) => {
     this.setState({
-      inputMsg: evt.target.value
+      inputMsg: evt.target.value,
     });
   };
 
@@ -23,7 +23,7 @@ class chatApp extends Component {
       const newMessages = [...this.state.messages, text];
       this.setState({
         messages: newMessages,
-        inputMsg: ""
+        inputMsg: "",
       });
     }
   };
@@ -47,12 +47,12 @@ class MessageList extends React.PureComponent {
   render() {
     return (
       <ul>
-        {this.props.messages.map(msg => (
-          <li>{msg}</li>
+        {this.props.messages.map((msg) => (
+          <li key={msg}>{msg}</li>
         ))}
       </ul>
     );
   }
 }
 
-export default withTimer(chatApp)
+export default withTimer(chatApp);

@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
-import { MemoryRouter } from "react-router";
 
 const Home = () => <h1>Home</h1>;
 const Hello = () => <h1>Hello</h1>;

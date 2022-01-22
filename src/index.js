@@ -12,13 +12,13 @@ import StateTest from "./components/StateTest";
 import AntdTest from "./components/AntdTest";
 import SnapshotSample from "./lifecycle/SnapshotSample";
 import chatApp from "./chat/chatApp";
-import UseContext from "./content/UseContext"
-import HookTest from "./hook/HookTest"
+import UseContext from "./content/UseContext";
+import HookTest from "./hook/HookTest";
 import Hello from "./Hello";
 
 const styles = {
   fontFamily: "sans-serif",
-  paddingLeft: "250px"
+  paddingLeft: "250px",
 };
 
 const routeMap = {
@@ -33,11 +33,11 @@ const routeMap = {
   "antd-test": AntdTest,
   "snapshot-sample": SnapshotSample,
   "use-context": UseContext,
-  "hook-test":HookTest
+  "hook-test": HookTest,
 };
 
 class App extends React.PureComponent {
-  handleLinkClick = key => {
+  handleLinkClick = (key) => {
     // window.location.hash = `#${key}`;
     window.history.pushState(null, "", `/#/${key}`);
     this.forceUpdate();
@@ -49,11 +49,11 @@ class App extends React.PureComponent {
     return (
       <div style={styles}>
         <ul className="menu-list">
-          {Object.keys(routeMap).map(key => (
+          {Object.keys(routeMap).map((key) => (
             <li key={key} className={key === currentPage ? "is-active" : ""} style={{ listStyle: "none" }}>
-              <span className="link" onClick={() => this.handleLinkClick(key)}>
+              <button className="link" onClick={() => this.handleLinkClick(key)} onKeyDown={() => this.handleLinkClick(key)}>
                 {key}
-              </span>
+              </button>
             </li>
           ))}
         </ul>
