@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 
-export default class Clock extends Component {
+type IState = {
+  date: Date;
+};
+
+export default class Clock extends Component<{}, IState> {
+  timer: NodeJS.Timer;
   constructor(props) {
     super(props);
     console.log("Clock constructed");

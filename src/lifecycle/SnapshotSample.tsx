@@ -1,13 +1,19 @@
 import React, { PureComponent } from "react";
 import "./SnapshotSample.css";
 
+interface Iprops {
+  messages?: string;
+}
+
 export default class SnapshotSample extends PureComponent {
   state = {
     messages: [],
   };
+  rootNode: any;
+  interval: NodeJS.Timer;
 
   handleNewMessage() {
-    this.setState((prev) => ({
+    this.setState((prev: Iprops) => ({
       messages: [`msg ${prev.messages.length}`, ...prev.messages],
     }));
   }

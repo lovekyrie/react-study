@@ -10,7 +10,7 @@ import Composition from "./components/Composition";
 import Hoc from "./components/Hoc";
 import StateTest from "./components/StateTest";
 import AntdTest from "./components/AntdTest";
-import SnapshotSample from "./lifecycle/SnapshotSample";
+import SnapshotSample from "./lifecycle/SnapshotSample.tsx";
 import chatApp from "./chat/chatApp";
 import UseContext from "./content/UseContext";
 import HookTest from "./hook/HookTest";

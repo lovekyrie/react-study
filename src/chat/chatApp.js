@@ -9,8 +9,8 @@ class chatApp extends Component {
   state = {
     messages: [],
     inputMsg: "",
+    time: new Date(),
   };
-
   handleInput = (evt) => {
     this.setState({
       inputMsg: evt.target.value,

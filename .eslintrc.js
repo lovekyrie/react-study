@@ -18,7 +18,7 @@ module.exports = {
     "linebreak-style": ["off", "unix"],
     quotes: ["error", "double"],
     semi: ["error", "always"],
-    "react/prop-types": 0,
+    "react/prop-types": 0, //校验属性，可以加上ts
     "no-unused-vars": 0,
     "no-undef": 0,
   },
