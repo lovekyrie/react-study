@@ -37,7 +37,7 @@ export default function PureDemo() {
           />
         </div>
 
-        <div className="bg-gray-100 p-4 rounded mt-4">
+        <div className="p-4 border text-green-200 rounded mt-4">
           <Greeting name={name} />
         </div>
       </div>

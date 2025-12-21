@@ -14,6 +14,7 @@ import JsxDemo from './lessons-common/01-jsx/JsxDemo'
 import RenderingDemo from './lessons-common/02-rendering-elements/RenderingDemo'
 import PropsDemo from './lessons-common/03-components-props/PropsDemo'
 import LifecycleDemo from './lessons-common/04-state-lifecycle/LifecycleDemo'
+import ClassLifecycleDemo from './lessons-common/04-state-lifecycle/ClassLifecycleDemo' // Import Class Component
 import EventDemo from './lessons-common/05-handling-events/EventDemo'
 import ConditionDemo from './lessons-common/06-conditional-rendering/ConditionDemo'
 import ListDemo from './lessons-common/07-lists-keys/ListDemo'
@@ -40,7 +41,13 @@ function App() {
     { id: 1, label: 'JSX', component: <JsxDemo /> },
     { id: 2, label: 'Rendering', component: <RenderingDemo /> },
     { id: 3, label: 'Components', component: <PropsDemo /> },
-    { id: 4, label: 'State & Lifecycle', component: <LifecycleDemo /> },
+    // Combine Hook and Class demos for Lesson 4
+    { id: 4, label: 'State & Lifecycle', component: (
+      <div className="space-y-8">
+        <LifecycleDemo />
+        <ClassLifecycleDemo />
+      </div>
+    )},
     { id: 5, label: 'Events', component: <EventDemo /> },
     { id: 6, label: 'Conditional', component: <ConditionDemo /> },
     { id: 7, label: 'Lists', component: <ListDemo /> },
@@ -57,7 +64,7 @@ function App() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col items-center py-12 px-4">
       <header className="mb-8 text-center w-full max-w-4xl">
         <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight">
-          React Study (v16.14)
+          React Study
         </h1>
         
         {/* Section Toggle */}

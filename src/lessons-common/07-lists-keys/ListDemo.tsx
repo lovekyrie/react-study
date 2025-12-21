@@ -25,7 +25,7 @@ export default function ListDemo() {
         {todos.map((todo) => (
           <li 
             key={todo.id} 
-            className="flex justify-between items-center p-2 bg-white border rounded shadow-sm"
+            className="flex justify-between items-center p-2 border rounded shadow-sm"
           >
             <span>{todo.text}</span>
             <button

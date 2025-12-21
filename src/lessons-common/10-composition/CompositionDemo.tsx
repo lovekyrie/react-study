@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 // A generic "Box" component (Composition)
-function FancyBorder(props: { color: string, children: ReactNode }) {
+function FancyBorder(props: { color: string, children: React.ReactNode }) {
   return (
     <div className={'border-4 rounded-xl p-4 mb-4 ' + (
       props.color === 'blue' ? 'border-blue-500' : 'border-pink-500'
@@ -11,7 +11,7 @@ function FancyBorder(props: { color: string, children: ReactNode }) {
   );
 }
 
-function Dialog(props: { title: string, message: string, children?: ReactNode }) {
+function Dialog(props: { title: string, message: string, children?: React.ReactNode }) {
   return (
     <FancyBorder color="blue">
       <h1 className="text-2xl font-bold mb-2">{props.title}</h1>

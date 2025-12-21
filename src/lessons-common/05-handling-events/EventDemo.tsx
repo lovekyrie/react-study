@@ -1,15 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function EventDemo() {
-  function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
+  const [switchState, setSwitchState] = useState(false);
+  function handleClick(e: React.MouseEvent<HTMLAnchorElement>) {
     e.preventDefault();
     alert('The link was clicked.');
   }
-
-  function handleSwitch(isOn: boolean) {
-    alert(`Switch is now ${isOn ? 'ON' : 'OFF'}`);
-  }
-
+  
   return (
     <div className="p-4 border rounded shadow-sm">
       <h2 className="text-xl font-bold mb-4">5. Handling Events</h2>
@@ -24,15 +21,16 @@ export default function EventDemo() {
 
         <div>
           <h3 className="font-semibold mb-2">Passing Arguments:</h3>
+          <p>Switch is now {switchState ? 'ON' : 'OFF'}</p>
           <div className="flex gap-2">
             <button 
-              onClick={() => handleSwitch(true)}
+              onClick={() => setSwitchState(true)}
               className="bg-green-500 text-white px-3 py-1 rounded"
             >
               Turn ON
             </button>
             <button 
-              onClick={() => handleSwitch(false)}
+              onClick={() => setSwitchState(false)}
               className="bg-red-500 text-white px-3 py-1 rounded"
             >
               Turn OFF

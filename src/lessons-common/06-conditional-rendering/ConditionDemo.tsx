@@ -8,6 +8,13 @@ function GuestGreeting() {
   return <h3 className="text-gray-500">Please sign up.</h3>;
 }
 
+function Greeting({ isLoggedIn }: { isLoggedIn: boolean }) {
+  if (isLoggedIn) {
+    return <UserGreeting />;
+  }
+  return <GuestGreeting />;
+}
+
 export default function ConditionDemo() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [unreadMessages, setUnreadMessages] = useState(['Hello', 'React']);
@@ -25,9 +32,11 @@ export default function ConditionDemo() {
         </button>
         {/* If-Else Logic */}
         {isLoggedIn ? <UserGreeting /> : <GuestGreeting />}
+        { /* or Judge in the component */}
+        <Greeting isLoggedIn={isLoggedIn} />
       </div>
 
-      <div className="p-4 bg-yellow-50 rounded border border-yellow-200">
+      <div className="p-4 rounded border border-yellow-200">
         <h4 className="font-bold">Inbox</h4>
         {/* Logical && Operator */}
         {unreadMessages.length > 0 && (
