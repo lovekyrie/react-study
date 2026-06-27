@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 // Advanced Lessons (React 16 Hooks Era)
 import Counter from './lessons-react16/01-state-management/Counter'
@@ -24,8 +24,11 @@ import CompositionDemo from './lessons-common/10-composition/CompositionDemo'
 import PureDemo from './lessons-common/11-pure-components/PureDemo'
 import ContextDemo from './lessons-common/12-use-context/ContextDemo'
 
+// Juejin Lessons
+import UseEffectJuejin from './lessons-juejin/hooks/useEffect'
+
 function App() {
-  const [section, setSection] = useState<'advanced' | 'common'>('common');
+  const [section, setSection] = useState<'advanced' | 'common' | 'juejin'>('common');
   const [currentLesson, setCurrentLesson] = useState(1);
 
   const advancedLessons = [
@@ -58,7 +61,15 @@ function App() {
     { id: 12, label: 'Context', component: <ContextDemo /> },
   ];
 
-  const lessons = section === 'advanced' ? advancedLessons : commonLessons;
+  const juejinLessons = [
+    { id: 1, label: 'useEffect', component: <UseEffectJuejin /> },
+  ];
+
+  const lessons = section === 'advanced' 
+    ? advancedLessons 
+    : section === 'juejin' 
+      ? juejinLessons 
+      : commonLessons;
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col items-center py-12 px-4">
@@ -89,6 +100,16 @@ function App() {
               }`}
             >
               Hooks & Patterns
+            </button>
+            <button
+              onClick={() => { setSection('juejin'); setCurrentLesson(1); }}
+              className={`px-6 py-2 rounded-md text-sm font-bold transition-all ${
+                section === 'juejin' 
+                  ? 'bg-blue-100 text-blue-700' 
+                  : 'text-gray-500 hover:text-gray-700'
+              }`}
+            >
+              Juejin
             </button>
           </div>
         </div>
