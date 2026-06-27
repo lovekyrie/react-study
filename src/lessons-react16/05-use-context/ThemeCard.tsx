@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { ThemeContext } from './ThemeContext';
+import { useContext } from 'react';
+import { ThemeContext } from './theme-context';
 
 export default function ThemeCard() {
   // 3. Use Context Hook
@@ -28,4 +28,3 @@ export default function ThemeCard() {
     </div>
   );
 }
-

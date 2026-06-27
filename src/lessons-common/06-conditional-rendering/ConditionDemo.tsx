@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function UserGreeting() {
   return <h3 className="text-green-600 font-bold">Welcome back!</h3>;
@@ -55,4 +55,3 @@ export default function ConditionDemo() {
     </div>
   );
 }
-

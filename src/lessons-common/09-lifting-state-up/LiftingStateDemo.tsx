@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function BoilingVerdict({ celsius }: { celsius: number }) {
   if (celsius >= 100) {
@@ -85,4 +85,3 @@ export default function LiftingStateDemo() {
     </div>
   );
 }
-

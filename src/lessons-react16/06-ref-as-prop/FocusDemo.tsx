@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import { useRef, forwardRef } from 'react';
 
 // Child component that exposes a DOM node or method
 // React 16 requires forwardRef to accept a 'ref' prop
@@ -40,4 +40,3 @@ export default function FocusDemo() {
     </div>
   );
 }
-
