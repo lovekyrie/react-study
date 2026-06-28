@@ -1,6 +1,12 @@
 // 模拟后端 API
 // 接收 FormData，返回包含 error 或 success 消息的对象
-export async function signupUser(prevState: any, formData: FormData) {
+type SignupState = {
+  email: string;
+  error?: string;
+  message?: string;
+} | null;
+
+export async function signupUser(_prevState: SignupState, formData: FormData): Promise<SignupState> {
   // 模拟网络延迟
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -28,4 +34,3 @@ export async function signupUser(prevState: any, formData: FormData) {
     email: '',
   };
 }
-

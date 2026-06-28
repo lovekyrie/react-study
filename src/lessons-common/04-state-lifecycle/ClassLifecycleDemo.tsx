@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-interface Props {}
+type Props = Record<string, never>;
 
 interface State {
   count: number;
@@ -25,14 +25,14 @@ export default class ClassLifecycleDemo extends Component<Props, State> {
   }
 
   // 3. Updating (Before render decision)
-  shouldComponentUpdate(nextProps: Props, nextState: State) {
+  shouldComponentUpdate(_nextProps: Props, nextState: State) {
     console.log('[Class] shouldComponentUpdate', nextState);
     // Return false to prevent re-render (optimization)
     return true; 
   }
 
   // 4. Updating (After render)
-  componentDidUpdate(prevProps: Props, prevState: State) {
+  componentDidUpdate(_prevProps: Props, prevState: State) {
     console.log('[Class] componentDidUpdate');
     console.log('Previous State:', prevState);
     console.log('Current State:', this.state);
@@ -80,4 +80,3 @@ export default class ClassLifecycleDemo extends Component<Props, State> {
     );
   }
 }
-

@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import { useState, memo } from 'react';
 
 // Pure Component using React.memo
 // It only re-renders if props change
@@ -44,4 +44,3 @@ export default function PureDemo() {
     </div>
   );
 }
-

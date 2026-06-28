@@ -1,5 +1,6 @@
 import { use, useState } from 'react';
-import { ThemeContext, ThemeProvider } from './ThemeContext';
+import { ThemeProvider } from './ThemeContext';
+import { ThemeContext } from './theme-context';
 
 function ThemeCard({ showDetails }: { showDetails: boolean }) {
   // 传统 Hooks 规则：Hooks 必须在顶层，不能在 if 里
@@ -100,4 +101,3 @@ export function ThemeContainer() {
     </ThemeProvider>
   );
 }
-

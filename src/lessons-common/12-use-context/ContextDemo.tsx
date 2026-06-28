@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 // 1. Create Context
 const ThemeContext = createContext('light');
@@ -42,4 +42,3 @@ function ThemedButton() {
     </button>
   );
 }
-

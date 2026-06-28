@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 interface Todo {
   id: number;
@@ -42,4 +42,3 @@ export default function ListDemo() {
     </div>
   );
 }
-
