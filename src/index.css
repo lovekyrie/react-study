@@ -1,13 +1,29 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: dark;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  color: #e6edf7;
+  background: #070a0f;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --app-bg: #070a0f;
+  --app-bg-soft: #0d121a;
+  --panel: rgba(15, 22, 32, 0.88);
+  --panel-strong: rgba(20, 29, 41, 0.94);
+  --panel-soft: rgba(25, 35, 48, 0.7);
+  --line: rgba(148, 163, 184, 0.22);
+  --line-strong: rgba(203, 213, 225, 0.38);
+  --text: #ecf4ff;
+  --text-soft: #c8d3e1;
+  --text-muted: #8f9bad;
+  --blue: #6da7ff;
+  --cyan: #5fd4d1;
+  --green: #8fd17f;
+  --amber: #f3be62;
+  --rose: #f27f8b;
+  --focus: #7dd3fc;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,10 +31,49 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: var(--app-bg);
+}
+
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
+  min-height: 100vh;
+  background:
+    linear-gradient(145deg, #070a0f 0%, #0c1119 45%, #11110d 100%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 72px);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 0;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: rgba(109, 167, 255, 0.35);
+  color: var(--text);
+}
+
+#root {
   min-height: 100vh;
 }

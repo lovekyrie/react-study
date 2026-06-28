@@ -12,6 +12,9 @@ interface Action {
 function reducer(state: Data, action: Action): Data {
   switch (action.type) {
     case 'add':
+      // 如果不返回新对象，则状态不会更新
+      // state.result += action.num;
+      // return state;
       return { ...state, result: state.result + action.num };
     case 'minus':
       return { ...state, result: state.result - action.num };
