@@ -1,15 +1,15 @@
-type StepOneProps = {
-  value: string;
-  onChange: (value: string) => void;
-  onNext: () => void;
-};
+interface StepOneProps {
+  value: string
+  onChange: (value: string) => void
+  onNext: () => void
+}
 
 export function StepOne({ value, onChange, onNext }: StepOneProps) {
   return (
     <form
       onSubmit={(e) => {
-        e.preventDefault();
-        onNext();
+        e.preventDefault()
+        onNext()
       }}
       className="flex flex-col gap-4 w-full max-w-sm"
     >
@@ -19,17 +19,17 @@ export function StepOne({ value, onChange, onNext }: StepOneProps) {
           type="text"
           name="name"
           value={value}
-          onChange={(event) => onChange(event.target.value)}
+          onChange={event => onChange(event.target.value)}
           className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"
           placeholder="请输入您的姓名"
         />
       </div>
-      <button 
+      <button
         type="submit"
         className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium cursor-pointer"
       >
         下一步
       </button>
     </form>
-  );
+  )
 }

@@ -1,18 +1,18 @@
-import { useContext } from 'react';
-import { ThemeContext } from './theme-context';
+import { useContext } from 'react'
+import { ThemeContext } from './theme-context'
 
 export default function ThemeCard() {
   // 3. Use Context Hook
-  const context = useContext(ThemeContext);
+  const context = useContext(ThemeContext)
 
   if (!context) {
-    throw new Error('ThemeCard must be used within a ThemeProvider');
+    throw new Error('ThemeCard must be used within a ThemeProvider')
   }
 
-  const { theme, toggleTheme } = context;
+  const { theme, toggleTheme } = context
 
   return (
-    <div 
+    <div
       className={`p-6 rounded-lg transition-colors duration-300 ${
         theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-800 shadow-md'
       }`}
@@ -26,5 +26,5 @@ export default function ThemeCard() {
         Toggle Theme
       </button>
     </div>
-  );
+  )
 }

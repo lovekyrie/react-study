@@ -1,9 +1,9 @@
-import { useFormStatus } from 'react-dom';
+import { useFormStatus } from 'react-dom'
 
 export function SubmitButton() {
   // useFormStatus 必须在 <form> 内部渲染的组件中调用
   // 它会自动寻找最近的父级 <form> 并获取其状态
-  const { pending } = useFormStatus();
+  const { pending } = useFormStatus()
 
   return (
     <button
@@ -17,6 +17,5 @@ export function SubmitButton() {
     >
       {pending ? '提交中...' : '立即注册'}
     </button>
-  );
+  )
 }
-
