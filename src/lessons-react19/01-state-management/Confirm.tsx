@@ -1,8 +1,8 @@
-type ConfirmProps = {
-  name: string;
-  email: string;
-  onReset: () => void;
-};
+interface ConfirmProps {
+  name: string
+  email: string
+  onReset: () => void
+}
 
 export function Confirm({ name, email, onReset }: ConfirmProps) {
   return (
@@ -20,12 +20,12 @@ export function Confirm({ name, email, onReset }: ConfirmProps) {
           </div>
         </div>
       </div>
-      <button 
+      <button
         onClick={onReset}
         className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium cursor-pointer w-full"
       >
         重置
       </button>
     </div>
-  );
+  )
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react'
+import { Confirm } from './Confirm'
 import { StepOne } from './StepOne'
 import { StepTwo } from './StepTwo'
-import { Confirm } from './Confirm'
 
 export function MultiStepForm() {
   const [step, setStep] = useState(1)
@@ -12,7 +12,7 @@ export function MultiStepForm() {
 
   // 更新帮助函数，让代码更清晰
   const updateField = (field: 'name' | 'email', value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
+    setFormData(prev => ({ ...prev, [field]: value }))
   }
 
   return (
@@ -24,12 +24,12 @@ export function MultiStepForm() {
         <p className="text-center text-gray-500 dark:text-gray-400 text-sm">
           State Management & Component Splitting
         </p>
-        
+
         {/* 简单的进度条 */}
         <div className="flex gap-2 mt-6 mb-2">
-          {[1, 2, 3].map((i) => (
-            <div 
-              key={i} 
+          {[1, 2, 3].map(i => (
+            <div
+              key={i}
               className={`h-2 flex-1 rounded-full transition-colors duration-300 ${
                 i <= step ? 'bg-blue-600' : 'bg-gray-200 dark:bg-gray-700'
               }`}
@@ -37,12 +37,12 @@ export function MultiStepForm() {
           ))}
         </div>
       </div>
-      
+
       <div className="w-full">
         {step === 1 && (
           <StepOne
             value={formData.name}
-            onChange={(val) => updateField('name', val)}
+            onChange={val => updateField('name', val)}
             onNext={() => setStep(2)}
           />
         )}
@@ -50,7 +50,7 @@ export function MultiStepForm() {
         {step === 2 && (
           <StepTwo
             value={formData.email}
-            onChange={(val) => updateField('email', val)}
+            onChange={val => updateField('email', val)}
             onNext={() => setStep(3)}
           />
         )}
@@ -60,8 +60,8 @@ export function MultiStepForm() {
             name={formData.name}
             email={formData.email}
             onReset={() => {
-              setStep(1);
-              setFormData({ name: '', email: '' }); 
+              setStep(1)
+              setFormData({ name: '', email: '' })
             }}
           />
         )}

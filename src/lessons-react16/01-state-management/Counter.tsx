@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
 export default function Counter() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0)
 
   return (
     <div className="p-4 border rounded shadow">
@@ -22,5 +22,5 @@ export default function Counter() {
         </button>
       </div>
     </div>
-  );
+  )
 }

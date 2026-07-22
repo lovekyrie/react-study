@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
 // A generic "Box" component (Composition)
 function FancyBorder(props: { color: string, children: React.ReactNode }) {
   return (
-    <div className={'border-4 rounded-xl p-4 mb-4 ' + (
-      props.color === 'blue' ? 'border-blue-500' : 'border-pink-500'
-    )}>
+    <div className={`border-4 rounded-xl p-4 mb-4 ${
+      props.color === 'blue' ? 'border-blue-500' : 'border-pink-500'}`}
+    >
       {props.children}
     </div>
-  );
+  )
 }
 
 function Dialog(props: { title: string, message: string, children?: React.ReactNode }) {
@@ -18,14 +18,14 @@ function Dialog(props: { title: string, message: string, children?: React.ReactN
       <p className="text-gray-600 mb-4">{props.message}</p>
       {props.children}
     </FancyBorder>
-  );
+  )
 }
 
 export default function CompositionDemo() {
   return (
     <div className="p-4 border rounded shadow-sm">
       <h2 className="text-xl font-bold mb-4">10. Composition vs Inheritance</h2>
-      
+
       <Dialog
         title="Welcome"
         message="Thank you for visiting our spacecraft!"
@@ -44,6 +44,5 @@ export default function CompositionDemo() {
         </div>
       </Dialog>
     </div>
-  );
+  )
 }
-

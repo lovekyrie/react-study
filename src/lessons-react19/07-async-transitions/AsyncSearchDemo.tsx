@@ -1,10 +1,10 @@
-import { useState, useTransition } from 'react';
+import { useState, useTransition } from 'react'
 
-type SearchResult = {
-  id: number;
-  name: string;
-  role: string;
-};
+interface SearchResult {
+  id: number
+  name: string
+  role: string
+}
 
 const USERS: SearchResult[] = [
   { id: 1, name: 'Ada Lovelace', role: 'Compiler pioneer' },
@@ -12,35 +12,36 @@ const USERS: SearchResult[] = [
   { id: 3, name: 'Dan Abramov', role: 'React education' },
   { id: 4, name: 'Sophie Alpert', role: 'React architecture' },
   { id: 5, name: 'Andrew Clark', role: 'React reconciler' },
-];
+]
 
 async function searchUsers(query: string) {
-  await new Promise((resolve) => setTimeout(resolve, 700));
+  await new Promise(resolve => setTimeout(resolve, 700))
 
-  const normalizedQuery = query.trim().toLowerCase();
-  if (!normalizedQuery) return USERS;
+  const normalizedQuery = query.trim().toLowerCase()
+  if (!normalizedQuery)
+    return USERS
 
   return USERS.filter((user) => {
-    const searchableText = `${user.name} ${user.role}`.toLowerCase();
-    return searchableText.includes(normalizedQuery);
-  });
+    const searchableText = `${user.name} ${user.role}`.toLowerCase()
+    return searchableText.includes(normalizedQuery)
+  })
 }
 
 export function AsyncSearchDemo() {
-  const [query, setQuery] = useState('');
-  const [results, setResults] = useState<SearchResult[]>(USERS);
-  const [lastQuery, setLastQuery] = useState('all');
-  const [isPending, startTransition] = useTransition();
+  const [query, setQuery] = useState('')
+  const [results, setResults] = useState<SearchResult[]>(USERS)
+  const [lastQuery, setLastQuery] = useState('all')
+  const [isPending, startTransition] = useTransition()
 
   const handleSearch = (value: string) => {
-    setQuery(value);
+    setQuery(value)
 
     startTransition(async () => {
-      const nextResults = await searchUsers(value);
-      setResults(nextResults);
-      setLastQuery(value.trim() || 'all');
-    });
-  };
+      const nextResults = await searchUsers(value)
+      setResults(nextResults)
+      setLastQuery(value.trim() || 'all')
+    })
+  }
 
   return (
     <div className="flex w-full max-w-md flex-col items-center gap-6 rounded-2xl border border-gray-100 bg-white p-8 shadow-xl dark:border-gray-700 dark:bg-gray-800">
@@ -57,7 +58,7 @@ export function AsyncSearchDemo() {
         Search people
         <input
           value={query}
-          onChange={(event) => handleSearch(event.target.value)}
+          onChange={event => handleSearch(event.target.value)}
           className="rounded-lg border border-gray-300 px-4 py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
           placeholder="React, compiler, Grace..."
         />
@@ -76,7 +77,7 @@ export function AsyncSearchDemo() {
         </div>
 
         <ul className="space-y-2">
-          {results.map((result) => (
+          {results.map(result => (
             <li
               key={result.id}
               className="rounded-lg border border-gray-200 bg-white p-3 dark:border-gray-700 dark:bg-gray-800"
@@ -92,5 +93,5 @@ export function AsyncSearchDemo() {
         )}
       </div>
     </div>
-  );
+  )
 }

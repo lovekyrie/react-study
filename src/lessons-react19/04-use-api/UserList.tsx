@@ -1,15 +1,16 @@
-import { use, Suspense, useState } from 'react';
-import { fetchUsers, type User } from './api';
+import type { User } from './api'
+import { Suspense, use, useState } from 'react'
+import { fetchUsers } from './api'
 
 // 1. 展示组件：直接读取 Promise
 function UserList({ usersPromise }: { usersPromise: Promise<User[]> }) {
   // use() 会暂停组件渲染，直到 Promise 完成
   // 如果 Promise 失败，它会抛出错误（可以用 ErrorBoundary 捕获）
-  const users = use(usersPromise);
+  const users = use(usersPromise)
 
   return (
     <ul className="w-full space-y-2">
-      {users.map((user) => (
+      {users.map(user => (
         <li
           key={user.id}
           className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow border border-gray-100 dark:border-gray-700 flex justify-between items-center"
@@ -19,17 +20,17 @@ function UserList({ usersPromise }: { usersPromise: Promise<User[]> }) {
         </li>
       ))}
     </ul>
-  );
+  )
 }
 
 // 2. 容器组件：管理 Promise 和 Suspense
 export function UserListContainer() {
   // 我们将 Promise 存储在 state 中，以确保渲染期间 Promise 实例不变
-  const [usersPromise, setUsersPromise] = useState<Promise<User[]> | null>(null);
+  const [usersPromise, setUsersPromise] = useState<Promise<User[]> | null>(null)
 
   const loadData = () => {
-    setUsersPromise(fetchUsers());
-  };
+    setUsersPromise(fetchUsers())
+  }
 
   return (
     <div className="flex flex-col items-center gap-8 p-8 bg-gray-50 dark:bg-gray-900 rounded-2xl w-full max-w-md border border-gray-200 dark:border-gray-700">
@@ -53,17 +54,17 @@ export function UserListContainer() {
         <div className="w-full">
           {/* Suspense 捕获子组件的挂起状态，并展示 fallback */}
           <Suspense
-            fallback={
+            fallback={(
               <div className="flex flex-col items-center gap-4 py-8">
                 <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
                 <p className="text-gray-500 text-sm">正在从服务器获取数据...</p>
               </div>
-            }
+            )}
           >
             <UserList usersPromise={usersPromise} />
           </Suspense>
-          
-          <button 
+
+          <button
             onClick={() => setUsersPromise(null)}
             className="mt-6 text-sm text-blue-500 hover:text-blue-700 underline cursor-pointer w-full text-center"
           >
@@ -72,6 +73,5 @@ export function UserListContainer() {
         </div>
       )}
     </div>
-  );
+  )
 }
-

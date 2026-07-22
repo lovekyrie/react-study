@@ -1,19 +1,19 @@
-import React from 'react';
+import React from 'react'
 
 export default function JsxDemo() {
-  const name = "React Learner";
-  const element = <span>Hello, {name}!</span>;
-  
+  const name = 'React Learner'
+  const element = <span>Hello, {name}!</span>
+
   const user = {
     firstName: 'Harper',
-    lastName: 'Perez'
-  };
+    lastName: 'Perez',
+  }
 
   function formatName(user: { firstName: string, lastName: string }) {
-    return user.firstName + ' ' + user.lastName;
+    return `${user.firstName} ${user.lastName}`
   }
-  
-  const rawHtml = "<span>I am <strong>HTML</strong> string</span>";
+
+  const rawHtml = '<span>I am <strong>HTML</strong> string</span>'
 
   return (
     <div className="p-4 border rounded shadow-sm">
@@ -30,10 +30,10 @@ export default function JsxDemo() {
         <section>
           <h3 className="font-semibold border-b mb-2">Children & Fragments</h3>
           <p className="mb-2 text-sm text-gray-600">
-            JSX tags may contain children. If you don't want an extra wrapping <code>&lt;div&gt;</code>, 
+            JSX tags may contain children. If you don't want an extra wrapping <code>&lt;div&gt;</code>,
             use Fragments.
           </p>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="border p-2 rounded">
               <p className="font-bold text-sm mb-1">Standard (Wrapped in div):</p>
@@ -63,7 +63,7 @@ export default function JsxDemo() {
 
         <section className="p-4 rounded border border-yellow-200 text-sm">
           <h3 className="font-bold text-lg mb-3">Key Differences from HTML</h3>
-          
+
           {/* 1. Class -> className */}
           <div className="mb-3">
             <p className="font-bold">1. className (instead of class):</p>
@@ -88,8 +88,8 @@ export default function JsxDemo() {
           <div className="mb-3">
             <p className="font-bold">3. CamelCase Attributes:</p>
             <p className="mb-1">HTML attributes like <code>onclick</code>, <code>tabindex</code> become camelCase.</p>
-            <button 
-              onClick={() => alert('Clicked!')} 
+            <button
+              onClick={() => alert('Clicked!')}
               tabIndex={0}
               className="bg-blue-100 px-2 py-1 text-blue-800 rounded hover:bg-blue-200"
             >
@@ -109,9 +109,9 @@ export default function JsxDemo() {
           {/* 5. innerHTML */}
           <div className="mb-3">
             <p className="font-bold">5. dangerouslySetInnerHTML (instead of innerHTML):</p>
-            <div 
+            <div
               className="border p-1 text-blue-600"
-              dangerouslySetInnerHTML={{ __html: rawHtml }} 
+              dangerouslySetInnerHTML={{ __html: rawHtml }}
             />
           </div>
 
@@ -126,5 +126,5 @@ export default function JsxDemo() {
         </section>
       </div>
     </div>
-  );
+  )
 }

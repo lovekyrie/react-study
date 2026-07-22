@@ -1,12 +1,11 @@
-
 // Child Component
-function Welcome(props: { name: string; role?: string }) {
+function Welcome(props: { name: string, role?: string }) {
   return (
     <li className="p-2 rounded shadow-sm border">
-      Hello, <strong>{props.name}</strong> 
+      Hello, <strong>{props.name}</strong>
       {props.role && <span className="text-xs ml-2 bg-blue-100 text-blue-800 px-2 py-0.5 rounded">{props.role}</span>}
     </li>
-  );
+  )
 }
 
 // Parent Component
@@ -21,6 +20,5 @@ export default function PropsDemo() {
         <Welcome name="Edite" role="Editor" />
       </ul>
     </div>
-  );
+  )
 }
-

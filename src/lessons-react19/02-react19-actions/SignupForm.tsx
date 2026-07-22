@@ -1,9 +1,9 @@
-import { useActionState } from 'react';
-import { signupUser } from './actions';
-import { SubmitButton } from './SubmitButton';
+import { useActionState } from 'react'
+import { signupUser } from './actions'
+import { SubmitButton } from './SubmitButton'
 
 export function SignupForm() {
-  const [state, formAction] = useActionState(signupUser, null);
+  const [state, formAction] = useActionState(signupUser, null)
 
   return (
     <div className="flex flex-col items-center gap-8 p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl w-full max-w-md border border-gray-100 dark:border-gray-700">
@@ -37,17 +37,17 @@ export function SignupForm() {
           )}
         </div>
 
-        {/* 
+        {/*
           这里使用了独立的 SubmitButton 组件。
           它内部使用 useFormStatus() 来自动感知表单的提交状态，
           而不需要我们通过 Props 传递 isPending。
         */}
         <SubmitButton />
       </form>
-      
+
       <div className="text-xs text-gray-400 w-full text-center border-t border-gray-100 dark:border-gray-700 pt-4">
         尝试输入 <b>error@example.com</b> 来查看服务器错误处理
       </div>
     </div>
-  );
+  )
 }

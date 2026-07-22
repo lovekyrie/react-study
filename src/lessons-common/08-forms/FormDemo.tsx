@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 export default function FormDemo() {
   const [formData, setFormData] = useState({
     name: '',
     flavor: 'coconut',
-    isGoing: true
-  });
+    isGoing: true,
+  })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const target = e.target;
-    const value = target.type === 'checkbox' ? (target as HTMLInputElement).checked : target.value;
-    const name = target.name;
+    const target = e.target
+    const value = target.type === 'checkbox' ? (target as HTMLInputElement).checked : target.value
+    const name = target.name
 
     setFormData({
       ...formData,
-      [name]: value
-    });
-  };
+      [name]: value,
+    })
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert('Submitted: ' + JSON.stringify(formData, null, 2));
-  };
+    e.preventDefault()
+    alert(`Submitted: ${JSON.stringify(formData, null, 2)}`)
+  }
 
   return (
     <div className="p-4 border rounded shadow-sm">
       <h2 className="text-xl font-bold mb-4">8. Forms (Controlled)</h2>
-      
+
       <form onSubmit={handleSubmit} className="space-y-4 max-w-sm">
         <div>
           <label className="block text-sm font-medium">Name:</label>
@@ -41,9 +41,9 @@ export default function FormDemo() {
 
         <div>
           <label className="block text-sm font-medium">Favorite Flavor:</label>
-          <select 
-            name="flavor" 
-            value={formData.flavor} 
+          <select
+            name="flavor"
+            value={formData.flavor}
             onChange={handleChange}
             className="w-full border p-1 rounded"
           >
@@ -71,6 +71,5 @@ export default function FormDemo() {
         </button>
       </form>
     </div>
-  );
+  )
 }
-

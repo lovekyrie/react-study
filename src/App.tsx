@@ -1,64 +1,65 @@
-import { useState, type ReactNode } from 'react';
-import './App.css';
-
+import type { ReactNode } from 'react'
+import { useState } from 'react'
 // Common Concepts
-import JsxDemo from './lessons-common/01-jsx/JsxDemo';
-import RenderingDemo from './lessons-common/02-rendering-elements/RenderingDemo';
-import PropsDemo from './lessons-common/03-components-props/PropsDemo';
-import LifecycleDemo from './lessons-common/04-state-lifecycle/LifecycleDemo';
-import ClassLifecycleDemo from './lessons-common/04-state-lifecycle/ClassLifecycleDemo';
-import EventDemo from './lessons-common/05-handling-events/EventDemo';
-import ConditionDemo from './lessons-common/06-conditional-rendering/ConditionDemo';
-import ListDemo from './lessons-common/07-lists-keys/ListDemo';
-import FormDemo from './lessons-common/08-forms/FormDemo';
-import LiftingStateDemo from './lessons-common/09-lifting-state-up/LiftingStateDemo';
-import CompositionDemo from './lessons-common/10-composition/CompositionDemo';
-import PureDemo from './lessons-common/11-pure-components/PureDemo';
-import ContextDemo from './lessons-common/12-use-context/ContextDemo';
+import JsxDemo from './lessons-common/01-jsx/JsxDemo'
+
+import RenderingDemo from './lessons-common/02-rendering-elements/RenderingDemo'
+import PropsDemo from './lessons-common/03-components-props/PropsDemo'
+import ClassLifecycleDemo from './lessons-common/04-state-lifecycle/ClassLifecycleDemo'
+import LifecycleDemo from './lessons-common/04-state-lifecycle/LifecycleDemo'
+import EventDemo from './lessons-common/05-handling-events/EventDemo'
+import ConditionDemo from './lessons-common/06-conditional-rendering/ConditionDemo'
+import ListDemo from './lessons-common/07-lists-keys/ListDemo'
+import FormDemo from './lessons-common/08-forms/FormDemo'
+import LiftingStateDemo from './lessons-common/09-lifting-state-up/LiftingStateDemo'
+import CompositionDemo from './lessons-common/10-composition/CompositionDemo'
+import PureDemo from './lessons-common/11-pure-components/PureDemo'
+import ContextDemo from './lessons-common/12-use-context/ContextDemo'
+import ForwardRefUseImperativeHandleJuejin from './lessons-juejin/hooks/forwardRefUseImperativeHandle'
+
+import MemoUseMemoUseCallbackJuejin from './lessons-juejin/hooks/memoUseMemoUseCallback'
+import HooksSummaryJuejin from './lessons-juejin/hooks/summary'
+import UseContextJuejin from './lessons-juejin/hooks/useContext'
+// Juejin Lessons
+import UseEffectJuejin from './lessons-juejin/hooks/useEffect'
+import UseReducerJuejin from './lessons-juejin/hooks/useReducer'
+import UseReducerImmerJuejin from './lessons-juejin/hooks/useReducerImmer'
+import UseRefJuejin from './lessons-juejin/hooks/useRef'
 
 // React 16 style comparisons
-import React16Counter from './lessons-react16/01-state-management/Counter';
-import React16SignupForm from './lessons-react16/02-manual-actions/SignupForm';
-import React16MessageList from './lessons-react16/03-optimistic-ui/MessageList';
-import React16UserList from './lessons-react16/04-use-api/UserList';
-import React16ThemeCard from './lessons-react16/05-use-context/ThemeCard';
-import { ThemeProvider as React16ThemeProvider } from './lessons-react16/05-use-context/ThemeContext';
-import React16FocusDemo from './lessons-react16/06-ref-as-prop/FocusDemo';
-
+import React16Counter from './lessons-react16/01-state-management/Counter'
+import React16SignupForm from './lessons-react16/02-manual-actions/SignupForm'
+import React16MessageList from './lessons-react16/03-optimistic-ui/MessageList'
+import React16UserList from './lessons-react16/04-use-api/UserList'
+import React16ThemeCard from './lessons-react16/05-use-context/ThemeCard'
+import { ThemeProvider as React16ThemeProvider } from './lessons-react16/05-use-context/ThemeContext'
+import React16FocusDemo from './lessons-react16/06-ref-as-prop/FocusDemo'
 // React 19 comparisons
-import { MultiStepForm } from './lessons-react19/01-state-management/MultiStepForm';
-import { SignupForm as React19SignupForm } from './lessons-react19/02-react19-actions/SignupForm';
-import { MessageList as React19MessageList } from './lessons-react19/03-optimistic-ui/MessageList';
-import { UserListContainer } from './lessons-react19/04-use-api/UserList';
-import { ThemeContainer } from './lessons-react19/05-use-context/ThemeCard';
-import { FocusDemo as React19FocusDemo } from './lessons-react19/06-ref-as-prop/FocusDemo';
-import { AsyncSearchDemo } from './lessons-react19/07-async-transitions/AsyncSearchDemo';
-import { React192Demo } from './lessons-react19/08-react19-2/React192Demo';
+import { MultiStepForm } from './lessons-react19/01-state-management/MultiStepForm'
 
-// Juejin Lessons
-import UseEffectJuejin from './lessons-juejin/hooks/useEffect';
-import UseReducerJuejin from './lessons-juejin/hooks/useReducer';
-import UseReducerImmerJuejin from './lessons-juejin/hooks/useReducerImmer';
-import UseRefJuejin from './lessons-juejin/hooks/useRef';
-import ForwardRefUseImperativeHandleJuejin from './lessons-juejin/hooks/forwardRefUseImperativeHandle';
-import UseContextJuejin from './lessons-juejin/hooks/useContext';
-import MemoUseMemoUseCallbackJuejin from './lessons-juejin/hooks/memoUseMemoUseCallback';
-import HooksSummaryJuejin from './lessons-juejin/hooks/summary';
+import { SignupForm as React19SignupForm } from './lessons-react19/02-react19-actions/SignupForm'
+import { MessageList as React19MessageList } from './lessons-react19/03-optimistic-ui/MessageList'
+import { UserListContainer } from './lessons-react19/04-use-api/UserList'
+import { ThemeContainer } from './lessons-react19/05-use-context/ThemeCard'
+import { FocusDemo as React19FocusDemo } from './lessons-react19/06-ref-as-prop/FocusDemo'
+import { AsyncSearchDemo } from './lessons-react19/07-async-transitions/AsyncSearchDemo'
+import { React192Demo } from './lessons-react19/08-react19-2/React192Demo'
+import './App.css'
 
-type SectionId = 'common' | 'react16' | 'react19' | 'react192' | 'juejin';
+type SectionId = 'common' | 'react16' | 'react19' | 'react192' | 'juejin'
 
-type Lesson = {
-  id: number;
-  label: string;
-  component: ReactNode;
-};
+interface Lesson {
+  id: number
+  label: string
+  component: ReactNode
+}
 
-type Section = {
-  label: string;
-  description: string;
-  accent: string;
-  lessons: Lesson[];
-};
+interface Section {
+  label: string
+  description: string
+  accent: string
+  lessons: Lesson[]
+}
 
 const commonLessons: Lesson[] = [
   { id: 1, label: 'JSX', component: <JsxDemo /> },
@@ -82,7 +83,7 @@ const commonLessons: Lesson[] = [
   { id: 10, label: 'Composition', component: <CompositionDemo /> },
   { id: 11, label: 'Pure Components', component: <PureDemo /> },
   { id: 12, label: 'Context', component: <ContextDemo /> },
-];
+]
 
 const react16Lessons: Lesson[] = [
   { id: 1, label: '1. State', component: <React16Counter /> },
@@ -99,7 +100,7 @@ const react16Lessons: Lesson[] = [
     ),
   },
   { id: 6, label: '6. Forward Ref', component: <React16FocusDemo /> },
-];
+]
 
 const react19Lessons: Lesson[] = [
   { id: 1, label: '1. State Split', component: <MultiStepForm /> },
@@ -109,7 +110,7 @@ const react19Lessons: Lesson[] = [
   { id: 5, label: '5. use(Context)', component: <ThemeContainer /> },
   { id: 6, label: '6. Ref as Prop', component: <React19FocusDemo /> },
   { id: 7, label: '7. Transitions', component: <AsyncSearchDemo /> },
-];
+]
 
 const juejinLessons: Lesson[] = [
   { id: 1, label: '1. useEffect', component: <UseEffectJuejin /> },
@@ -128,7 +129,7 @@ const juejinLessons: Lesson[] = [
     component: <MemoUseMemoUseCallbackJuejin />,
   },
   { id: 8, label: '8. 总结', component: <HooksSummaryJuejin /> },
-];
+]
 
 const sections: Record<SectionId, Section> = {
   common: {
@@ -161,43 +162,43 @@ const sections: Record<SectionId, Section> = {
     accent: 'Notes',
     lessons: juejinLessons,
   },
-};
+}
 
-const sectionIds = Object.keys(sections) as SectionId[];
-const lessonIndex = sectionIds.flatMap((sectionId) =>
-  sections[sectionId].lessons.map((lesson) => ({
+const sectionIds = Object.keys(sections) as SectionId[]
+const lessonIndex = sectionIds.flatMap(sectionId =>
+  sections[sectionId].lessons.map(lesson => ({
     sectionId,
     lesson,
   })),
-);
+)
 
 function App() {
-  const [section, setSection] = useState<SectionId>('common');
-  const [currentLesson, setCurrentLesson] = useState(1);
+  const [section, setSection] = useState<SectionId>('common')
+  const [currentLesson, setCurrentLesson] = useState(1)
 
-  const activeSection = sections[section];
-  const activeLesson = activeSection.lessons.find((lesson) => lesson.id === currentLesson)
-    ?? activeSection.lessons[0];
+  const activeSection = sections[section]
+  const activeLesson = activeSection.lessons.find(lesson => lesson.id === currentLesson)
+    ?? activeSection.lessons[0]
   const activeIndex = Math.max(
     lessonIndex.findIndex(
-      (entry) => entry.sectionId === section && entry.lesson.id === activeLesson.id,
+      entry => entry.sectionId === section && entry.lesson.id === activeLesson.id,
     ),
     0,
-  );
-  const activeNumber = activeIndex + 1;
-  const progress = Math.round((activeNumber / lessonIndex.length) * 100);
-  const previousLesson = lessonIndex[activeIndex - 1];
-  const nextLesson = lessonIndex[activeIndex + 1];
+  )
+  const activeNumber = activeIndex + 1
+  const progress = Math.round((activeNumber / lessonIndex.length) * 100)
+  const previousLesson = lessonIndex[activeIndex - 1]
+  const nextLesson = lessonIndex[activeIndex + 1]
 
   const selectSection = (nextSection: SectionId) => {
-    setSection(nextSection);
-    setCurrentLesson(1);
-  };
+    setSection(nextSection)
+    setCurrentLesson(1)
+  }
 
   const selectLesson = (nextSection: SectionId, lessonId: number) => {
-    setSection(nextSection);
-    setCurrentLesson(lessonId);
-  };
+    setSection(nextSection)
+    setCurrentLesson(lessonId)
+  }
 
   return (
     <div className="app-shell">
@@ -210,8 +211,8 @@ function App() {
 
         <nav className="course-nav" aria-label="Course sections">
           {sectionIds.map((sectionId) => {
-            const currentSection = sections[sectionId];
-            const isActiveSection = section === sectionId;
+            const currentSection = sections[sectionId]
+            const isActiveSection = section === sectionId
 
             return (
               <section
@@ -233,7 +234,7 @@ function App() {
 
                 {isActiveSection && (
                   <div className="lesson-list">
-                    {currentSection.lessons.map((lesson) => (
+                    {currentSection.lessons.map(lesson => (
                       <button
                         key={lesson.id}
                         type="button"
@@ -248,7 +249,7 @@ function App() {
                   </div>
                 )}
               </section>
-            );
+            )
           })}
         </nav>
       </aside>
@@ -308,7 +309,7 @@ function App() {
         </footer>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
