@@ -44,6 +44,7 @@ import { ThemeContainer } from './lessons-react19/05-use-context/ThemeCard'
 import { FocusDemo as React19FocusDemo } from './lessons-react19/06-ref-as-prop/FocusDemo'
 import { AsyncSearchDemo } from './lessons-react19/07-async-transitions/AsyncSearchDemo'
 import { React192Demo } from './lessons-react19/08-react19-2/React192Demo'
+import reactLogo from './assets/react.svg'
 import './App.css'
 
 type SectionId = 'common' | 'react16' | 'react19' | 'react192' | 'juejin'
@@ -204,9 +205,13 @@ function App() {
     <div className="app-shell">
       <aside className="course-sidebar" aria-label="React course navigation">
         <div className="brand-panel">
-          <span className="brand-kicker">React Study</span>
-          <h1>学习工作台</h1>
-          <p>{activeSection.description}</p>
+          <span className="brand-mark" aria-hidden="true">
+            <img src={reactLogo} alt="" />
+          </span>
+          <div>
+            <h1>React Study</h1>
+            <p>{activeSection.description}</p>
+          </div>
         </div>
 
         <nav className="course-nav" aria-label="Course sections">
@@ -225,9 +230,11 @@ function App() {
                   className="section-button"
                   aria-expanded={isActiveSection}
                 >
+                  <span className="section-chevron" aria-hidden="true">
+                    {isActiveSection ? '⌄' : '›'}
+                  </span>
                   <span>
                     <span className="section-label">{currentSection.label}</span>
-                    <span className="section-description">{currentSection.description}</span>
                   </span>
                   <span className="section-meta">{currentSection.lessons.length}</span>
                 </button>
@@ -252,17 +259,33 @@ function App() {
             )
           })}
         </nav>
+
+        <div className="sidebar-progress" aria-label={`Course progress ${progress}%`}>
+          <div className="sidebar-progress-copy">
+            <span>Course Progress</span>
+            <strong>{progress}%</strong>
+          </div>
+          <div className="progress-track">
+            <div className="progress-value" style={{ width: `${progress}%` }} />
+          </div>
+        </div>
       </aside>
 
       <div className="study-workspace">
         <header className="study-header">
-          <div>
+          <div className="header-copy">
             <div className="lesson-eyebrow">
+              <span className="menu-glyph" aria-hidden="true">≡</span>
               <span>{activeSection.accent}</span>
               <span>{activeNumber} / {lessonIndex.length}</span>
             </div>
-            <h2>{activeLesson.label}</h2>
-            <p>{activeSection.description}</p>
+            <div className="lesson-title-row">
+              <span className="lesson-icon" aria-hidden="true"><span /></span>
+              <div>
+                <h2>{activeLesson.label}</h2>
+                <p>{activeSection.description}</p>
+              </div>
+            </div>
           </div>
 
           <div className="progress-card" aria-label={`Course progress ${progress}%`}>
@@ -274,39 +297,41 @@ function App() {
           </div>
         </header>
 
-        <main className="lesson-stage">
-          <div className="lesson-shell">
-            {activeLesson?.component}
-          </div>
-        </main>
+        <section className="study-body">
+          <main className="lesson-stage">
+            <div className="lesson-shell">
+              {activeLesson?.component}
+            </div>
+          </main>
 
-        <footer className="lesson-controls" aria-label="Lesson controls">
-          <button
-            type="button"
-            onClick={() => previousLesson && selectLesson(previousLesson.sectionId, previousLesson.lesson.id)}
-            disabled={!previousLesson}
-            className="control-button"
-          >
-            <span aria-hidden="true">&larr;</span>
-            <span>
-              <small>Previous</small>
-              {previousLesson ? previousLesson.lesson.label : 'Start'}
-            </span>
-          </button>
+          <footer className="lesson-controls" aria-label="Lesson controls">
+            <button
+              type="button"
+              onClick={() => previousLesson && selectLesson(previousLesson.sectionId, previousLesson.lesson.id)}
+              disabled={!previousLesson}
+              className="control-button"
+            >
+              <span className="control-arrow" aria-hidden="true">&larr;</span>
+              <span>
+                <small>Previous</small>
+                {previousLesson ? previousLesson.lesson.label : 'Start'}
+              </span>
+            </button>
 
-          <button
-            type="button"
-            onClick={() => nextLesson && selectLesson(nextLesson.sectionId, nextLesson.lesson.id)}
-            disabled={!nextLesson}
-            className="control-button control-button-primary"
-          >
-            <span>
-              <small>Next</small>
-              {nextLesson ? nextLesson.lesson.label : 'Completed'}
-            </span>
-            <span aria-hidden="true">&rarr;</span>
-          </button>
-        </footer>
+            <button
+              type="button"
+              onClick={() => nextLesson && selectLesson(nextLesson.sectionId, nextLesson.lesson.id)}
+              disabled={!nextLesson}
+              className="control-button control-button-primary"
+            >
+              <span>
+                <small>Next</small>
+                {nextLesson ? nextLesson.lesson.label : 'Completed'}
+              </span>
+              <span className="control-arrow" aria-hidden="true">&rarr;</span>
+            </button>
+          </footer>
+        </section>
       </div>
     </div>
   )

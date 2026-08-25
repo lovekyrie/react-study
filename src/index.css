@@ -8,18 +8,18 @@
   color: #e6edf7;
   background: #070a0f;
 
-  --app-bg: #070a0f;
-  --app-bg-soft: #0d121a;
-  --panel: rgba(15, 22, 32, 0.88);
-  --panel-strong: rgba(20, 29, 41, 0.94);
-  --panel-soft: rgba(25, 35, 48, 0.7);
-  --line: rgba(148, 163, 184, 0.22);
-  --line-strong: rgba(203, 213, 225, 0.38);
-  --text: #ecf4ff;
-  --text-soft: #c8d3e1;
-  --text-muted: #8f9bad;
-  --blue: #6da7ff;
-  --cyan: #5fd4d1;
+  --app-bg: #080e16;
+  --app-bg-soft: #0b1420;
+  --panel: rgba(11, 20, 31, 0.92);
+  --panel-strong: rgba(13, 24, 38, 0.96);
+  --panel-soft: rgba(18, 31, 48, 0.72);
+  --line: rgba(125, 151, 184, 0.24);
+  --line-strong: rgba(151, 177, 210, 0.34);
+  --text: #edf4ff;
+  --text-soft: #bdc9da;
+  --text-muted: #8492a6;
+  --blue: #5d9eff;
+  --cyan: #5bcdf4;
   --green: #8fd17f;
   --amber: #f3be62;
   --rose: #f27f8b;
@@ -45,8 +45,8 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background:
-    linear-gradient(145deg, #070a0f 0%, #0c1119 45%, #11110d 100%),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 72px);
+    radial-gradient(circle at 70% -10%, rgba(63, 119, 190, 0.11), transparent 38%),
+    linear-gradient(145deg, #080e16 0%, #0a111b 52%, #081019 100%);
 }
 
 button,

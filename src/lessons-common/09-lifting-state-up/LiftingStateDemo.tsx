@@ -56,6 +56,7 @@ export default function LiftingStateDemo() {
   const [scale, setScale] = useState<'c' | 'f'>('c')
 
   const handleCelsiusChange = (temperature: string) => {
+    // 这边触发后，会触发父组件的 re-render (就会重新执行整个函数)
     setScale('c')
     setTemperature(temperature)
   }
