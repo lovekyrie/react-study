@@ -18,7 +18,7 @@ export default function FormDemo() {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.SubmitEvent) => {
     e.preventDefault()
     alert(`Submitted: ${JSON.stringify(formData, null, 2)}`)
   }
